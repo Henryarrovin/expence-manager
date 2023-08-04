@@ -2,7 +2,7 @@ import { StyleSheet, Text, View } from 'react-native';
 import AppBar from './components/AppBar';
 import MyTextField from './components/MyTextField';
 import Button from './components/Button';
-import { FlatList } from 'react-native-web';
+import { FlatList } from 'react-native';
 import { useState } from 'react';
 
 export default function App() {
