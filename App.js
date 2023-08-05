@@ -24,10 +24,11 @@ export default function App() {
     return total.toFixed(2);
   };
 
+
   return (
     
     <View style={styles.container}>
-      <AppBar title="Expense Manager" />
+      <AppBar/>
       <View style={styles.formContainer}>
         <MyTextField
           hintText="Enter Expenses"
