@@ -8,10 +8,12 @@ import { useState } from 'react';
 export default function App() {
   const [expenses, setExpenses] = useState(0);
   const [income, setIncome] = useState(0);
+  const [category, setCategory] = useState();
+  const [week, setWeek] = useState(0);
   const [transactions, setTransactions] = useState([]);
 
   const handleAddTransaction = () => {
-    const transaction = { expenses, income };
+    const transaction = { expenses, income, category, week };
     setTransactions([...transactions, transaction]);
     setExpenses(0);
     setIncome(0);
@@ -31,6 +33,10 @@ export default function App() {
       <AppBar/>
       <View style={styles.formContainer}>
         <MyTextField
+          hintText="Enter Category"
+          onChangeText={(text) => setCategory(text)}
+        />
+        <MyTextField
           hintText="Enter Expenses"
           onChangeText={(text) => setExpenses(parseFloat(text))}
         />
@@ -38,13 +44,24 @@ export default function App() {
           hintText="Enter Income"
           onChangeText={(text) => setIncome(parseFloat(text))}
         />
-        <Button title="Add Transaction" onPress={handleAddTransaction} />
+        <Button title="Add Transaction" onPress={
+          () => {
+            handleAddTransaction();
+            setWeek((week) => week+1);
+          }
+        } />
       </View>
       <View style={styles.transactionsContainer}>
         <FlatList
           data={transactions}
           renderItem={({ item }) => (
             <View style={styles.transactionItem}>
+              <Text>
+                Week {item.week}
+              </Text>
+              <Text style={styles.transactionText}>
+                Category: {item.category}
+              </Text>
               <Text style={styles.transactionText}>
                 Expenses: {item.expenses.toFixed(2)} rupees
               </Text>
