@@ -9,7 +9,7 @@ export default function App() {
   const [expenses, setExpenses] = useState(0);
   const [income, setIncome] = useState(0);
   const [category, setCategory] = useState();
-  const [week, setWeek] = useState(0);
+  const [week, setWeek] = useState(1);
   const [transactions, setTransactions] = useState([]);
 
   const handleAddTransaction = () => {
